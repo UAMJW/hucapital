@@ -24,7 +24,7 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     $candidates = Candidate::orderBy('created_at', 'asc')->get();
 
-    return view('candidates', [
+    return view('candidate', [
         'candidates' => $candidates
     ]);
 });
@@ -47,6 +47,7 @@ Route::post('/candidate', function (Request $request) {
 
     $candidate = new Candidate;
     $candidate->name = $request->name;
+    $candidate->email = $request->email;
     $candidate->save();
 
     return redirect('/');

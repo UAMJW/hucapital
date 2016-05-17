@@ -1,4 +1,4 @@
-<!-- resources/views/candidates.blade.php -->
+<!-- resources/views/candidate.blade.php -->
 
 @extends('layouts.app')
 
@@ -17,9 +17,13 @@
             <!-- Candidate Name -->
             <div class="form-group">
                 <label for="candidate" class="col-sm-3 control-label">Candidate</label>
-
                 <div class="col-sm-6">
                     <input type="text" name="name" id="candidate-name" class="form-control">
+                </div>
+
+                <label for="candidate" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-6">
+                    <input type="text" name="email" id="candidate-email" class="form-control">
                 </div>
             </div>
 
@@ -34,7 +38,6 @@
         </form>
     </div>
 
-    <!-- TODO: Current Candidates -->
     <!-- Current Candidates -->
     @if (count($candidates) > 0)
         <div class="panel panel-default">
@@ -63,7 +66,7 @@
                                 <td>
 								<!-- Delete Button -->
 								<td>
-									<form action="{{ url('task/'.$task->id) }}" method="POST">
+									<form action="{{ url('candidate/'.$candidate->id) }}" method="POST">
 										{{ csrf_field() }}
 										{{ method_field('DELETE') }}
 
